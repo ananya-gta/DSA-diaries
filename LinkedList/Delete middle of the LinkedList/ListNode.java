@@ -1,3 +1,5 @@
+// For solution refer : https://youtu.be/ePpV-_pfOeI?si=ihIBdmkWc7rMvphe
+
 public class ListNode {
     int val;
     ListNode next;
@@ -16,13 +18,17 @@ public class ListNode {
 }
 
 class Solution {
-    public ListNode reverseList(ListNode head) {
+    public ListNode deleteMiddle(ListNode head) {
         if (head == null || head.next == null) {
-            return head;
+            return null;
         }
-        ListNode newHead = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
-        return newHead;
+        ListNode slow = head, fast = head;
+        fast = fast.next.next; // (skip 1 step )
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        slow.next = slow.next.next;
+        return head;
     }
 }
