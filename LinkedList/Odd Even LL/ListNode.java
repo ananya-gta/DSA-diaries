@@ -4,8 +4,6 @@
 
 // For better understanding refer : https://youtu.be/qf6qp7GzD5Q?si=c_Fd-0Zl4ToXIJhF
 
-
-
 public class ListNode {
     int val;
     ListNode next;
@@ -25,6 +23,17 @@ public class ListNode {
 
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-
+        if (head == null || head.next == null)
+            return head;
+        ListNode odd = head, even = head.next, evenHead = head.next;
+        // condition on even only because even will always be ahead of odd
+        while (even != null && even.next != null) {
+            odd.next= odd.next.next;
+            even.next = even.next.next;
+            odd = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        return head;
     }
 }
