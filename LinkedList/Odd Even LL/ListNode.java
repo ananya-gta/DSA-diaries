@@ -26,7 +26,7 @@ class Solution {
         if (head == null || head.next == null)
             return head;
         ListNode odd = head, even = head.next, evenHead = head.next;
-        // condition on even only because even will always be ahead of odd
+        // condition on even only because even will always be ahead of odd node
         while (even != null && even.next != null) {
             odd.next= odd.next.next;
             even.next = even.next.next;
